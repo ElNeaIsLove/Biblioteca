@@ -21,7 +21,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>6</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="PaginaPrincipal">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -386,6 +386,13 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="pushButton_24">
+              <property name="text">
+               <string>Estadísticas</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButton_10">
               <property name="text">
                <string>Volver</string>
@@ -510,16 +517,6 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
             </item>
             <item>
              <widget class="QComboBox" name="comboBox_4"/>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_11">
-              <property name="text">
-               <string>Estado</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="comboBox_5"/>
             </item>
             <item>
              <spacer name="verticalSpacer_6">
@@ -762,6 +759,97 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
            <string>Volver</string>
           </property>
          </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Estadisticas">
+       <layout class="QVBoxLayout" name="verticalLayout_16">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_14">
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="Tetolo">
+            <property name="text">
+             <string>Estadísticas</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_15">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QTableWidget" name="tableWidget_3"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_7"/>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_27">
+              <property name="text">
+               <string>Volver</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>

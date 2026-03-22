@@ -74,9 +74,9 @@ class ABM:
                 self.comboBox_4.findData(libro["categoria_id"])
             )
 
-            self.comboBox_5.setCurrentIndex(
-                self.comboBox_5.findData(libro["estado"])
-            )
+            #self.comboBox_5.setCurrentIndex(
+                #self.comboBox_5.findData(libro["estado"])
+            #)
 
             self.stackedWidget.setCurrentIndex(3)
             return

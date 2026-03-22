@@ -38,3 +38,8 @@ class Navegacion:
             self.stackedWidget.setCurrentIndex(6)
             self.configurar_tabla_prestamos()
             self.cargar_tabla_prestamos()   
+
+        elif modo == "Estadísticas":
+            self.stackedWidget.setCurrentIndex(7)
+            self.configurar_tabla_prestamos()
+            self.cargar_tabla_prestamos() 

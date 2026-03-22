@@ -1,5 +1,9 @@
 from database.conexion import Conexion
 
+# Constantes para los estados
+ESTADO_DISPONIBLE = 1
+ESTADO_PRESTADO = 2
+
 class CRUDLibros:
     def __init__(self):
         self.db = Conexion()
@@ -52,28 +56,27 @@ class CRUDLibros:
         return r[0] if r else None
 
     def esta_prestado(self, libro_id):
-        r = self.db.consultar("SELECT 1 FROM libros WHERE id=? AND estado=2", (libro_id,))
+        r = self.db.consultar("SELECT 1 FROM libros WHERE id=? AND estado=?", (libro_id, ESTADO_PRESTADO))
         return bool(r)
 
-    def agregar(self, titulo, autor_id, anio, categoria_id, estado):
+    def agregar(self, titulo, autor_id, anio, categoria_id, estado=ESTADO_DISPONIBLE):
         self.db.ejecutar(
             "INSERT INTO libros (titulo, autor_id, anio, categoria_id, estado) VALUES (?, ?, ?, ?, ?)",
             (titulo, autor_id, anio, categoria_id, estado)
         )
 
-    def modificar(self, libro_id, titulo, autor_id, anio, categoria_id, estado):
+    def modificar(self, libro_id, titulo, autor_id, anio, categoria_id):
+        # Solo modifica los datos principales, no el estado
         self.db.ejecutar(
-            "UPDATE libros SET titulo=?, autor_id=?, anio=?, categoria_id=?, estado=? WHERE id=?",
-            (titulo, autor_id, anio, categoria_id, estado, libro_id)
+            "UPDATE libros SET titulo=?, autor_id=?, anio=?, categoria_id=? WHERE id=?",
+            (titulo, autor_id, anio, categoria_id, libro_id)
         )
 
     def eliminar(self, libro_id):
         self.db.ejecutar("DELETE FROM libros WHERE id=?", (libro_id,))
 
     def marcar_prestado(self, libro_id):
-        query = "UPDATE libros SET estado = 2 WHERE id = ?"
-        self.db.ejecutar(query, (libro_id,))
+        self.db.ejecutar("UPDATE libros SET estado=? WHERE id=?", (ESTADO_PRESTADO, libro_id))
     
     def marcar_disponible(self, libro_id):
-        query = "UPDATE libros SET estado = 1 WHERE id = ?"
-        self.db.ejecutar(query, (libro_id,))
+        self.db.ejecutar("UPDATE libros SET estado=? WHERE id=?", (ESTADO_DISPONIBLE, libro_id))

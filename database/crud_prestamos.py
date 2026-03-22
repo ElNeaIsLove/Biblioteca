@@ -106,3 +106,25 @@ class CRUDPrestamos:
             "DELETE FROM prestamos WHERE id=?",
             (prestamo_id,)
         )
+
+    def estadisticas_libros(self, orden="DESC"):
+        return self.db.consultar(f"""
+            SELECT 
+                l.titulo AS libro,
+                COUNT(*) AS cantidad
+            FROM prestamos p
+            JOIN libros l ON p.libro_id = l.id
+            GROUP BY l.titulo
+            ORDER BY cantidad {orden}
+        """)
+
+    def estadisticas_personas(self):
+        return self.db.consultar("""
+            SELECT 
+                pe.nombre,
+                COUNT(*) AS cantidad
+            FROM prestamos p
+            JOIN personas pe ON p.persona_id = pe.id
+            GROUP BY pe.nombre
+            ORDER BY cantidad DESC
+        """)

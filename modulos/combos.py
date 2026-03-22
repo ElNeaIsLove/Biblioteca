@@ -32,19 +32,19 @@ class Combos:
     def cargar_grados(self):
 
         self.comboBox_9.clear()
-
-        self.comboBox_9.addItem("1")
-        self.comboBox_9.addItem("2")
-        self.comboBox_9.addItem("3")
-        self.comboBox_9.addItem("4")
-        self.comboBox_9.addItem("5")
-        self.comboBox_9.addItem("6")
-        self.comboBox_9.addItem("7")
+        self.comboBox_9.addItem("Seleccione un grado", None)
+        self.comboBox_9.addItem("1ro")
+        self.comboBox_9.addItem("2do")
+        self.comboBox_9.addItem("3ro")
+        self.comboBox_9.addItem("4to")
+        self.comboBox_9.addItem("5to")
+        self.comboBox_9.addItem("6to")
+        self.comboBox_9.addItem("7mo")
 
     def cargar_tipo(self):
 
         self.comboBox_6.clear()
-
+        self.comboBox_6.addItem("Seleccione un tipo", None)
         self.comboBox_6.addItem("Alumno")
         self.comboBox_6.addItem("Profesor")
 
@@ -72,3 +72,11 @@ class Combos:
                 persona["nombre"],
                 persona["id"]
             )
+
+    def cargar_combo_estadisticas(self):
+        self.comboBox_7.clear()
+
+        self.comboBox_7.addItem("Seleccione la estadistica que desea ver", None)
+        self.comboBox_7.addItem("Libros más prestados")
+        self.comboBox_7.addItem("Libros menos prestados")
+        self.comboBox_7.addItem("Persona que más pide")

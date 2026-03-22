@@ -23,7 +23,7 @@ class FormLibro:
                 self.comboBox_3.currentData(),
                 self.spinBox.value(),
                 self.comboBox_4.currentData(),
-                self.comboBox_5.currentData()
+                #self.comboBox_5.currentData()
             )
 
         else:
@@ -34,7 +34,7 @@ class FormLibro:
                 self.comboBox_3.currentData(),
                 self.spinBox.value(),
                 self.comboBox_4.currentData(),
-                self.comboBox_5.currentData()
+                #self.comboBox_5.currentData()
             )
 
         self.abrir_abm("libros")
@@ -50,4 +50,4 @@ class FormLibro:
 
         self.comboBox_3.setCurrentIndex(0)
         self.comboBox_4.setCurrentIndex(0)
-        self.comboBox_5.setCurrentIndex(0)
+        #self.comboBox_5.setCurrentIndex(0)

@@ -60,6 +60,27 @@ class Tablas:
         for p in self.crud_prestamos.listar():
             print(dict(p))    
 
+    def configurar_tabla_estadisticas_libros(self):
+       self.tableWidget_3.setColumnCount(2)
+       self.tableWidget_3.setHorizontalHeaderLabels(
+           ["Libro", "Cantidad de veces prestado"]
+       )
+       self.tableWidget_3.setRowCount(0)
+
+       self.tableWidget_3.horizontalHeader().setStretchLastSection(True)
+       self.tableWidget_3.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+
+    def configurar_tabla_estadisticas_personas(self):
+        self.tableWidget_3.setColumnCount(2)
+        self.tableWidget_3.setHorizontalHeaderLabels(
+            ["Nombre", "Cantidad de veces que pidió un libro"]
+        )
+        self.tableWidget_3.setRowCount(0)
+    
+        self.tableWidget_3.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget_3.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+  
+
 
     def cargar_tabla_libros(self):
 
@@ -140,3 +161,55 @@ class Tablas:
             self.tableWidget_2.setItem(i, 3, QTableWidgetItem(p["fecha_prestamo"]))
             self.tableWidget_2.setItem(i, 4, QTableWidgetItem(p["fecha_devolucion"]))
     
+    def cargar_tabla_estadisticas(self):
+        self.tableWidget_3.setRowCount(0)
+    
+        opcion = self.comboBox_7.currentText()
+    
+        # OPCIÓN INICIAL
+        if opcion == "Seleccione la estadistica que desea ver":
+            self.Tetolo.setText("Estadísticas")
+            self.tableWidget_3.setColumnCount(1)
+            self.tableWidget_3.setHorizontalHeaderLabels(["Estadísticas"])
+            self.tableWidget_3.horizontalHeader().setStretchLastSection(True)
+            self.tableWidget_3.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+            return
+    
+        # LIBROS MÁS PRESTADOS
+        elif opcion == "Libros más prestados":
+            self.Tetolo.setText("Estadísticas de libros más prestados")
+            self.configurar_tabla_estadisticas_libros()
+            datos = self.crud_prestamos.estadisticas_libros("DESC")
+    
+        # LIBROS MENOS PRESTADOS
+        elif opcion == "Libros menos prestados":
+            self.Tetolo.setText("Estadísticas de libros menos prestados")
+            self.configurar_tabla_estadisticas_libros()
+            datos = self.crud_prestamos.estadisticas_libros("ASC")
+    
+        # PERSONAS
+        elif opcion == "Persona que más pide":
+            self.Tetolo.setText("Personas que más solicitan préstamos")
+            self.configurar_tabla_estadisticas_personas()
+            datos = self.crud_prestamos.estadisticas_personas()
+    
+        else:
+            return
+    
+        # CARGAR DATOS EN TABLA
+        for i, p in enumerate(datos):
+            self.tableWidget_3.insertRow(i)
+        
+            # Si es libro
+            if "libro" in p.keys():
+                nombre = p["libro"]
+            # Si es persona
+            elif "nombre" in p.keys():
+                nombre = p["nombre"]
+            else:
+                nombre = "N/D"
+        
+            cantidad = str(p["cantidad"])  # accedé directo, no get()
+        
+            self.tableWidget_3.setItem(i, 0, QTableWidgetItem(nombre))
+            self.tableWidget_3.setItem(i, 1, QTableWidgetItem(cantidad))        

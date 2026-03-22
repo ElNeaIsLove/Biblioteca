@@ -59,6 +59,7 @@ class MainWindow(QtWidgets.QMainWindow,
         self.pushButton_5.clicked.connect(lambda: self.abrir_abm("categorias"))
         self.pushButton_18.clicked.connect(lambda: self.abrir_abm("personas"))
         self.pushButton_19.clicked.connect(lambda: self.abrir_abm("prestamos"))
+        self.pushButton_24.clicked.connect(lambda: self.abrir_abm("Estadísticas"))
         self.pushButton_18.clicked.connect(lambda: print("personas"))
         self.pushButton_19.clicked.connect(lambda: print("prestamos"))
         self.pushButton_10.clicked.connect(self.volver_principal)
@@ -82,17 +83,25 @@ class MainWindow(QtWidgets.QMainWindow,
         # PRESTOAMOS
         self.pushButton_20.clicked.connect(self.guardar_prestamo)
         self.pushButton_23.clicked.connect(self.nuevo_item)
-        #self.pushButton_24.clicked.connect(self.cancelar_libro)
         self.pushButton_25.clicked.connect(self.devolver_prestamo)
         self.pushButton_26.clicked.connect(self.volver_menu_abm)
+
+        # Estadísticas
+        self.pushButton_27.clicked.connect(self.volver_menu_abm)
+
+        # Prstamos
+        self.pushButton_21.clicked.connect(lambda: self.abrir_abm("prestamos"))     
 
         # CARGAS
         self.cargar_autores()
         self.cargar_categorias()
-        self.cargar_estados()
+        #self.cargar_estados()
         self.cargar_filtros()
         self.cargar_grados()
         self.cargar_tipo()
+
+        self.cargar_combo_estadisticas()
+        self.comboBox_7.currentIndexChanged.connect(self.cargar_tabla_estadisticas)
 
         self.volver_principal()
 
