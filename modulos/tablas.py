@@ -2,6 +2,10 @@ from PyQt5.QtWidgets import QTableWidgetItem, QHeaderView, QTableWidget
 
 class Tablas:
 
+    def configurar_tabla_libros_inicio(self):
+        self.Lista.horizontalHeader().setStretchLastSection(True)
+        self.Lista.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)        
+
     def configurar_tabla_libros(self):
 
         self.tableWidget.clear()

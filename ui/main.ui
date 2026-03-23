@@ -21,7 +21,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>7</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="PaginaPrincipal">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -167,7 +167,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox"/>
+               <widget class="QComboBox" name="comboBox">
+                <property name="maxVisibleItems">
+                 <number>99</number>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="QLabel" name="label_4">
@@ -180,7 +184,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox_2"/>
+               <widget class="QComboBox" name="comboBox_2">
+                <property name="maxVisibleItems">
+                 <number>99</number>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="QLabel" name="label_5">
@@ -393,6 +401,13 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
              </widget>
             </item>
             <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButton_10">
               <property name="text">
                <string>Volver</string>
@@ -489,7 +504,11 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_3"/>
+             <widget class="QComboBox" name="comboBox_3">
+              <property name="maxVisibleItems">
+               <number>99</number>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_9">
@@ -516,7 +535,11 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_4"/>
+             <widget class="QComboBox" name="comboBox_4">
+              <property name="maxVisibleItems">
+               <number>99</number>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="verticalSpacer_6">
@@ -666,7 +689,11 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_8"/>
+             <widget class="QComboBox" name="comboBox_8">
+              <property name="maxVisibleItems">
+               <number>99</number>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLabel" name="label_17">
@@ -676,7 +703,11 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox_11"/>
+             <widget class="QComboBox" name="comboBox_11">
+              <property name="maxVisibleItems">
+               <number>99</number>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="verticalSpacer_4">
@@ -810,7 +841,11 @@ gridline-color: #CCCCCC;            /* líneas de la tabla */</string>
            <widget class="QTableWidget" name="tableWidget_3"/>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox_7"/>
+           <widget class="QComboBox" name="comboBox_7">
+            <property name="maxVisibleItems">
+             <number>99</number>
+            </property>
+           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_16">

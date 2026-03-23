@@ -2,6 +2,7 @@ class Navegacion:
 
     def volver_principal(self):
         self.stackedWidget.setCurrentIndex(0)
+        self.configurar_tabla_libros_inicio()
         self.limpiar_filtros()
 
     def ir_menu_abm(self):
@@ -42,4 +43,4 @@ class Navegacion:
         elif modo == "Estadísticas":
             self.stackedWidget.setCurrentIndex(7)
             self.configurar_tabla_prestamos()
-            self.cargar_tabla_prestamos() 
+            self.cargar_tabla_estadisticas() 
