@@ -75,7 +75,7 @@ class ABM:
             )
 
             #self.comboBox_5.setCurrentIndex(
-                #self.comboBox_5.findData(libro["estado"])
+                #self.comboBox_5.findData(libro["estado_id"])
             #)
 
             self.stackedWidget.setCurrentIndex(3)
@@ -143,56 +143,80 @@ class ABM:
     
         item_id = int(self.tableWidget.item(fila, 0).text())
     
-        # Primero mostramos el mensaje de confirmación
+        # Confirmación
         if QMessageBox.question(
                 self,
                 "Confirmar",
                 "¿Está seguro que desea eliminar este elemento?"
         ) != QMessageBox.Yes:
-            return  # Si el usuario no confirma, terminamos la función
+            return
     
-        # Verificamos si el libro está prestado antes de intentar eliminarlo
+        # -------- LIBROS --------
         if self.modo_abm == "libros":
     
-            if self.crud_libros.esta_prestado(item_id):  # Verificamos si el libro está prestado
-                # Si está prestado, mostramos un mensaje de advertencia y no eliminamos
+            if self.crud_libros.esta_prestado(item_id):
                 QMessageBox.warning(
                     self,
                     "No permitido",
                     "El libro está prestado y no puede ser eliminado."
                 )
-                return  # Terminamos la función sin eliminar el libro
+                return
     
-            # Si no está prestado, procedemos con la eliminación
             self.crud_libros.eliminar(item_id)
             self.cargar_tabla_libros()
     
+        # -------- AUTORES --------
         elif self.modo_abm == "autores":
+    
+            if self.crud_autores.tiene_libros(item_id):
+                QMessageBox.warning(
+                    self,
+                    "No permitido",
+                    "El autor tiene libros asociados y no puede ser eliminado."
+                )
+                return
     
             self.crud_autores.eliminar(item_id)
             self.cargar_tabla_autores()
     
+        # -------- CATEGORIAS --------
         elif self.modo_abm == "categorias":
+    
+            if self.crud_categorias.tiene_libros(item_id):
+                QMessageBox.warning(
+                    self,
+                    "No permitido",
+                    "La categoría tiene libros asociados y no puede ser eliminada."
+                )
+                return
     
             self.crud_categorias.eliminar(item_id)
             self.cargar_tabla_categorias()
-
+    
+        # -------- PERSONAS --------
         elif self.modo_abm == "personas":
-        
+    
+            if self.crud_personas.tiene_prestamos(item_id):
+                QMessageBox.warning(
+                    self,
+                    "No permitido",
+                    "La persona tiene préstamos asociados y no puede ser eliminada."
+                )
+                return
+    
             self.crud_personas.eliminar(item_id)
             self.cargar_tabla_personas()
-        
-        #   No se usa, ya que no se puede eliminar, solo devolver
-        #   Pero dejemoslo por ahi, quizá en algun momento me sirva
+    
+        # -------- PRESTAMOS --------
         elif self.modo_abm == "prestamos":
-        
+    
             self.crud_prestamos.eliminar(item_id)
             self.cargar_tabla_prestamos()
     
+        # -------- REFRESCOS GENERALES --------
         self.cargar_autores()
         self.cargar_categorias()
-        self.cargar_filtros()   
-
+        self.cargar_filtros()
 
     def devolver_prestamo(self):
         print("Hasta aca esta funcionando")

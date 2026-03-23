@@ -15,3 +15,8 @@ class CRUDCategorias:
 
     def eliminar(self, id_):
         self.db.ejecutar("DELETE FROM categorias WHERE id=?", (id_,))
+
+    def tiene_libros(self, categoria_id):
+        consulta = "SELECT COUNT(*) FROM libros WHERE categoria_id = ?"
+        resultado = self.db.consultar(consulta, (categoria_id,))
+        return resultado[0][0] > 0

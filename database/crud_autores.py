@@ -15,3 +15,8 @@ class CRUDAutores:
 
     def eliminar(self, id_):
         self.db.ejecutar("DELETE FROM autores WHERE id=?", (id_,))
+
+    def tiene_libros(self, autor_id):
+        consulta = "SELECT COUNT(*) FROM libros WHERE autor_id = ?"
+        resultado = self.db.consultar(consulta, (autor_id,))
+        return resultado[0][0] > 0

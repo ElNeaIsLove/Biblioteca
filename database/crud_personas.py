@@ -30,3 +30,8 @@ class CRUDPersonas:
 
     def eliminar(self, persona_id):
         self.db.ejecutar("DELETE FROM personas WHERE id=?", (persona_id,))
+
+    def tiene_prestamos(self, persona_id):
+        consulta = "SELECT COUNT(*) FROM prestamos WHERE persona_id = ?"
+        resultado = self.db.consultar(consulta, (persona_id,))
+        return resultado[0][0] > 0
